@@ -29,7 +29,7 @@ testRegle = input()
 if testRegle == "O" or testRegle == "o":	# Boucle de lecture des règles
 
 	print("""Les règles du jeu sont :""")
-	print("""- Vous misez sur un numéro compris entre 1 et 50 (50 numéros en tout). En choisissant le numéro, vous déposer la somme que vous souhaitez.""")
+	print("""- Vous misez sur un numéro compris entre 0 et 49 (50 numéros en tout). En choisissant le numéro, vous déposer la somme que vous souhaitez.""")
 	print("""- Le croupier lance la roulette, lâche la bille et quand la roulette s'arrête, relève le numéro de la case dans laquelle la bille s'est arrêtée. C'est le numéro gagnant.""")
 	print("""- Les numéros pairs sont de couleur noire, les numéros impairs sont de couleur rouge.""")
 	print("""- Si le numéro gagnant est celui que vous aviez choisi, vous gagnez 3 fois la somme misée.""")
@@ -38,13 +38,13 @@ if testRegle == "O" or testRegle == "o":	# Boucle de lecture des règles
 	
 print("""\n""")	
 	
-while continuerPartie:	
+while continuerPartie == True:	
 	
 	numeroMise = -1
 	
 	while numeroMise < 0 or numeroMise > 49:
 	
-		print("""Sur quel nombre souhaitez vous miser ? 1-50""")
+		print("""Sur quel numéro souhaitez vous miser ? 0-49""")
 		numeroMise = input()
 		# print("""\n""")
 	
@@ -54,18 +54,16 @@ while continuerPartie:
 			print("""Vous n'avez pas saisi de nombre.""")
 			numeroMise = -1
 			continue
-			
-		numeroMise = numeroMise - 1
 	
 		if numeroMise < 0:
 		
-			print("""Vous avez saisi un nombre inférieur à 1.""")
+			print("""Vous avez saisi un nombre inférieur à 0.""")
 		
 		if numeroMise > 49:
 			
-			print("""Vous avez saisi un nombre supérieur à 50.""")
+			print("""Vous avez saisi un nombre supérieur à 49.""")
 		
-	print("""Vous choississez le nombre""",numeroMise + 1,""".\n""")
+	print("""Vous choississez le numéro""",numeroMise,""".\n""")
 	
 	
 	argentMise = -1
@@ -91,12 +89,37 @@ while continuerPartie:
 	
 	print("""Vous misez""",argentMise,"""€.\n""")
 	
-	print("""Voulez vous continuez ? o/n""")	# Test si joueur souhaite ou non continuer à jouer
-	testContinuerPartie = input()
 	
-	if testContinuerPartie == """n""" or test_testContinuerPartie == """N""":
+	numeroGagnant = randrange(50)
+	
+	if numeroGagnant%2 == 0:
+		print("""Le numéro gagnant est le""",numeroGagnant,"""noir.""")
 		
-		print("""Vous quittez le casino avec""",argent,"""€. Revenez quand vous le voulez !""")
-		continuerPartie = False
-
+	else:
+		print("""Le numéro gagnant est le""",numeroGagnant,"""rouge.""")
 	
+	if numeroGagnant == numeroMise:
+		argent += argentMise*3
+		print("""Bien jouer ! Vous avez choisi le bon numéro ! Vous gagnez""",argentMise*3,"""€.\n""")
+	elif numeroGagnant%2 == numeroMise%2:
+		argent += ceil(argentMise*0.5)
+		print("""Bien jouer ! Vous avez choisi la bonne couleur ! Vous gagnez""",ceil(argentMise*0.5),"""€.\n""")
+	else:
+		argent += -argentMise
+		print("""Perdu. Vous n'avez ni le bon numéro ni la bonne couleur.\n""")
+		
+	if argent <= 0:
+		print("""Désolé vous n'avez plus d'argent. Merci d'avoir joué !.""")
+		continuerPartie = False
+		
+	else:
+		print("""Vous avez""",argent,"""€""")
+		print("""Voulez vous continuez ? o/n""")	# Test si joueur souhaite ou non continuer à jouer
+		testContinuerPartie = input()
+		print("""\n""")
+	
+		if testContinuerPartie == """n""" or testContinuerPartie == """N""":
+		
+			print("""Vous quittez le casino avec""",argent,"""€. Revenez quand vous le voulez !""")
+			continuerPartie = False
+
