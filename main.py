@@ -14,3 +14,31 @@
 
 from random import randrange
 from math import ceil 
+
+# Declaration des variables initiales
+argent = 1000	# Somme initiale du joueur
+continuerPartie = True	# Booleen de la boucle de jeu
+
+print("""Bienvenu(e) au Casino de Valo ! Vous avez""",argent,"""€""")
+print("""Vous vous installez à une roulette.""")
+print("""Souhaitez vous connaître les règles du jeux ?""")
+testRegle = input()
+
+print("""Les règles du jeu sont""")
+
+while continuerPartie:
+	
+	Print
+	
+	
+	
+	
+	print("""Voulez vous continuez ? o/n""")	# Test si joueur souhaite ou non continuer à jouer
+	testContinuerPartie = input()
+	
+	if testContinuerPartie == """n""" or test_testContinuerPartie == """N""":
+		
+		print("""Vous quittez le casino avec""",argent,"""€. Revenez quand vous le voulez !""")
+		continuerPartie = False
+
+	
