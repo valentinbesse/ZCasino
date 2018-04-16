@@ -35,12 +35,7 @@ if testRegle == "O" or testRegle == "o":	# Boucle de lecture des règles
 	print("""- Sinon vous perdre votre mise.""")
 	
 	
-while continuerPartie:
-	
-	Print
-	
-	
-	
+while continuerPartie:	
 	
 	print("""Voulez vous continuez ? o/n""")	# Test si joueur souhaite ou non continuer à jouer
 	testContinuerPartie = input()
