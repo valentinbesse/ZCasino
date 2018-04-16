@@ -21,11 +21,20 @@ continuerPartie = True	# Booleen de la boucle de jeu
 
 print("""Bienvenu(e) au Casino de Valo ! Vous avez""",argent,"""€""")
 print("""Vous vous installez à une roulette.""")
-print("""Souhaitez vous connaître les règles du jeux ?""")
+
+print("""Souhaitez vous connaître les règles du jeux ? o/n""")	# Test si le joueur veut connaitre les règles
 testRegle = input()
 
-print("""Les règles du jeu sont""")
-
+if testRegle == "O" or testRegle == "o":	# Boucle de lecture des règles
+	print("""Les règles du jeu sont :""")
+	print("""- Vous misez sur un numéro compris entre 0 et 49 (50 numéros en tout). En choisissant le numéro, vous déposer la somme que vous souhaitez.""")
+	print("""- Le croupier lance la roulette, lâche la bille et quand la roulette s'arrête, relève le numéro de la case dans laquelle la bille s'est arrêtée. C'est le numéro gagnant.""")
+	print("""- Les numéros pairs sont de couleur noire, les numéros impairs sont de couleur rouge.""")
+	print("""- Si le numéro gagnant est celui que vous aviez choisi, vous gagnez 3 fois la somme misée.""")
+	print("""- Si le numéro gagnant est de la même couleur que le numéro que vous aviez choisi, vous gagnez 50% de la somme misé.""")
+	print("""- Sinon vous perdre votre mise.""")
+	
+	
 while continuerPartie:
 	
 	Print
